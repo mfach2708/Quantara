@@ -1,0 +1,264 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f4f4;
+    color:#111;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 50px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#f4f4f4;
+}
+
+.menu{
+    display:flex;
+    gap:40px;
+    list-style:none;
+}
+
+.menu li{
+    cursor:pointer;
+    font-size:12px;
+}
+
+.nav-icons{
+    display:flex;
+    gap:20px;
+    align-items:center;
+}
+
+.nav-icons svg{
+    width:20px;
+    stroke-width:1.3;
+    color:#444;
+}
+
+.nav-icons img{
+    border-radius:50%;
+    width:34px;
+}
+
+.logo{
+    font-size: 19px;
+}
+
+.menu a{
+    text-decoration: none;
+    color: black;
+}
+
+.menu a.active-nav {
+    font-weight: 600;
+    border-bottom: 2px solid #222;
+    padding-bottom: 2px;
+}
+
+/* ================= ABOUT SECTION ================= */
+
+.about{
+    padding-top:30px;
+    padding-bottom:100px;
+    text-align:center;
+    position:relative;
+}
+
+.about h1{
+    font-size:36px;
+    margin-bottom:10px;
+    font-weight: 400;
+}
+
+.about h1 span{
+    color: rgb(130, 130, 130);
+}
+
+.about-sub{
+    font-size:11px;
+    color:#666;
+    max-width:400px;
+    margin:auto;
+}
+
+/* ================= STATS ================= */
+
+.stats{
+    position:absolute;
+    background:#e8e8e8;
+    padding:25px 60px;
+    border-radius:6px;
+}
+
+.stats h2{
+    font-size:25px;
+    font-weight:400;
+}
+
+.stats p{
+    font-size:10px;
+    color:#666;
+}
+
+.stats-left{
+    left:0;
+    top:50px;
+}
+
+.stats-right{
+    right:0;
+    top:80px;
+    display:flex;
+    gap:40px;
+}
+
+.stats-box{
+    text-align:center;
+}
+
+/* ================= CARD STAGE ================= */
+
+.stage{
+    margin-top:80px;
+    height:380px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.stack{
+    position:relative;
+    width:240px;
+    height:300px;
+}
+
+/* CARD */
+
+.card{
+    position:absolute;
+    top:0;
+    left:0;
+    width:240px;
+    height:280px;
+    padding:30px;
+    border-radius:20px;
+    color:white;
+    text-align: left;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    border:none;
+    opacity:0;
+    cursor:pointer;
+    -webkit-border-radius:20px;
+    -moz-border-radius:20px;
+    -ms-border-radius:20px;
+    -o-border-radius:20px;
+}
+
+.icon-wrap{
+    position:absolute;
+    right:25px;
+    bottom:25px;
+    width:56px;
+    height:56px;
+    border-radius:50%;
+    border:3px solid rgba(255,255,255,0.8);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:transparent;
+}
+
+.icon-wrap svg{
+    width:26px;
+    height:26px;
+    color:white;
+}
+
+.card h2{
+    font-size:27px;
+    font-weight:600;
+    margin-bottom:0px;
+}
+
+.card p{
+    font-size:11px;
+    color:rgba(255,255,255,0.9);
+    max-width:175px;
+    padding-bottom: 45px;
+}
+
+.card[data-i="0"]{
+    background: radial-gradient(circle at left, #F44336, #FF7167, #FF471D);
+}
+
+.card[data-i="1"]{
+    background: radial-gradient(circle at left, #C12456, #F15687, #C12456);
+}
+
+.card[data-i="2"]{
+    background: radial-gradient(circle at left, #DD4D93, #FF78B9, #DD4D93);
+}
+
+.card[data-i="3"]{
+    background: radial-gradient(circle at left, #4D84AE, #81ADCE, #4883B0);
+}
+
+
+/* ================= DESCRIPTION ================= */
+
+.about-desc{
+    margin-top:30px;
+    max-width:650px;
+    margin-left:auto;
+    margin-right:auto;
+    font-size:13px;
+    color:#555;
+    line-height:1.8;
+}
+
+footer{
+    background:#111;
+    color:white;
+    margin-top:30px;
+}
+
+.footer-container{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    padding:80px;
+    gap:40px;
+}
+
+.footer-col h4{
+    margin-bottom:20px;
+}
+
+.footer-col a{
+    display:block;
+    margin-bottom:10px;
+    color:#aaa;
+    text-decoration:none;
+}
+
+.footer-col a:hover{
+    color:white;
+}
+
+.copyright{
+    text-align:center;
+    padding:20px;
+    border-top:1px solid rgba(255,255,255,0.1);
+}

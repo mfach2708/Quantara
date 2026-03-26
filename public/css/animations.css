@@ -1,0 +1,289 @@
+/* =====================================================
+   ANIMATIONS.CSS — Quantara
+   Smooth, slow, premium entrance animations
+   for all pages
+   ===================================================== */
+
+/* ── Base: hide everything before animate ── */
+[data-anim] {
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+/* ── Keyframes ── */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(36px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-28px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeLeft {
+    from { opacity: 0; transform: translateX(40px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeRight {
+    from { opacity: 0; transform: translateX(-40px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleFade {
+    from { opacity: 0; transform: scale(0.94); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes revealLine {
+    from { opacity: 0; transform: scaleX(0); transform-origin: left; }
+    to   { opacity: 1; transform: scaleX(1); transform-origin: left; }
+}
+
+/* Line chart draw animation */
+@keyframes chartLineDraw {
+    from { stroke-dashoffset: var(--line-len, 3000); }
+    to   { stroke-dashoffset: 0; }
+}
+
+/* ── Animation classes (applied when in-view) ── */
+.anim-up    { animation: fadeUp    0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.anim-down  { animation: fadeDown  0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.anim-left  { animation: fadeLeft  0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.anim-right { animation: fadeRight 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.anim-scale { animation: scaleFade 1s   cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+
+/* ── Delay utilities ── */
+.delay-0   { animation-delay: 0ms !important; }
+.delay-100 { animation-delay: 100ms !important; }
+.delay-150 { animation-delay: 150ms !important; }
+.delay-200 { animation-delay: 200ms !important; }
+.delay-300 { animation-delay: 300ms !important; }
+.delay-400 { animation-delay: 400ms !important; }
+.delay-500 { animation-delay: 500ms !important; }
+.delay-600 { animation-delay: 600ms !important; }
+.delay-700 { animation-delay: 700ms !important; }
+.delay-800 { animation-delay: 800ms !important; }
+.delay-900 { animation-delay: 900ms !important; }
+.delay-1000{ animation-delay: 1000ms !important; }
+.delay-1200{ animation-delay: 1200ms !important; }
+
+/* ── Navbar entrance ── */
+.navbar {
+    animation: fadeDown 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0ms;
+}
+
+/* ── HOME: Hero Title ── */
+.hero-title h1 {
+    animation: fadeUp 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 120ms;
+}
+
+/* ── HOME: SVG Chart Line - special draw animation ── */
+#linePath {
+    /* override inline transition — handled by JS enhanced below */
+}
+
+/* ── HOME: chart bottom left text ── */
+.chart-bottom-left {
+    animation: fadeRight 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 1400ms;
+}
+
+/* ── HOME: stat cards staggered ── */
+.stats .card:nth-child(1) {
+    animation: scaleFade 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 1600ms;
+}
+.stats .card:nth-child(2) {
+    animation: scaleFade 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 1750ms;
+}
+.stats .card:nth-child(3) {
+    animation: scaleFade 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 1900ms;
+}
+.stats .card:nth-child(4) {
+    animation: scaleFade 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 2050ms;
+}
+
+/* ── HOME: Discover section ── */
+.discover-header {
+    animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 100ms;
+}
+.discover-grid .education {
+    animation: fadeRight 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 200ms;
+}
+.discover-grid .transaction {
+    animation: fadeLeft 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 350ms;
+}
+
+/* ── HOME: CTA section ── */
+.cta-section .cta-container {
+    animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 100ms;
+}
+.cta-item:nth-child(1) {
+    animation: fadeLeft 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 200ms;
+}
+.cta-item:nth-child(2) {
+    animation: fadeLeft 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 340ms;
+}
+.cta-item:nth-child(3) {
+    animation: fadeLeft 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 480ms;
+}
+
+/* ── ANALISIS: Page header ── */
+.analisis-page .page-header {
+    animation: fadeDown 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 80ms;
+}
+/* Summary cards staggered */
+.analisis-page .summary-card:nth-child(1) {
+    animation: fadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 220ms;
+}
+.analisis-page .summary-card:nth-child(2) {
+    animation: fadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 340ms;
+}
+.analisis-page .summary-card:nth-child(3) {
+    animation: fadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 460ms;
+}
+.analisis-page .summary-card:nth-child(4) {
+    animation: fadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 580ms;
+}
+/* Detail cards */
+.analisis-page .detail-card:nth-child(1) {
+    animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 700ms;
+}
+.analisis-page .detail-card:nth-child(2) {
+    animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 820ms;
+}
+.analisis-page .detail-card:nth-child(3) {
+    animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 940ms;
+}
+.analisis-page .reko-card {
+    animation: scaleFade 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 1060ms;
+}
+
+/* ── EDUKASI ── */
+.edu-page .edu-header {
+    animation: fadeDown 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 80ms;
+}
+.edu-page .edu-tabs {
+    animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 250ms;
+}
+.edu-page .edu-grid {
+    animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 400ms;
+}
+
+/* ── ABOUT ── */
+.about h1 {
+    animation: fadeUp 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 100ms;
+}
+.about .about-sub {
+    animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 260ms;
+}
+.about .stats-left {
+    animation: fadeRight 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 400ms;
+}
+.about .stats-right {
+    animation: fadeLeft 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 500ms;
+}
+.about .stage {
+    animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 600ms;
+}
+
+/* ── LANDING ── */
+.ln-hero-inner {
+    animation: fadeUp 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 200ms;
+}
+.ln-nav {
+    animation: fadeDown 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0ms;
+}
+
+/* ── PROFILE / SETTINGS ── */
+.profile-page,
+.settings-page {
+    animation: fadeUp 0.95s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 120ms;
+}
+
+/* ── AUTH pages ── */
+.auth-container,
+.auth-card,
+.signin-card,
+.signup-card {
+    animation: scaleFade 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 80ms;
+}
+
+/* ── CONTACT ── */
+.contact-page,
+.contact-container {
+    animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 100ms;
+}
+
+/* ── Smooth intersection observer for scroll-triggered elements ── */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Progress bar fill animation */
+@keyframes barFill {
+    from { width: 0 !important; }
+    to   { width: var(--bar-target, 0%); }
+}
+
+.analisis-page .bar-fill.animating {
+    animation: barFill 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* FAB entrance */
+.fab-wrapper {
+    animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 1200ms;
+}
+
+/* ── Reduced motion support ── */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

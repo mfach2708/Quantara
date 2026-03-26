@@ -1,0 +1,311 @@
+/* =====================================================
+   LANDING.CSS — Quantara
+   Pre-login landing page
+   ===================================================== */
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f4f4f4;
+    color: #222;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ══════════════════════════════════════
+   NAVBAR
+══════════════════════════════════════ */
+.ln-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: #f4f4f4;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.ln-logo {
+    font-size: 18px;
+    font-weight: 500;
+    color: #111;
+    letter-spacing: -0.01em;
+}
+
+.ln-menu {
+    display: flex;
+    gap: 44px;
+    list-style: none;
+}
+
+.ln-menu a {
+    font-size: 13px;
+    font-weight: 300;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.ln-menu a:hover {
+    color: #111;
+}
+
+.ln-menu-active {
+    font-weight: 500;
+    color: #111 !important;
+    border-bottom: 1.5px solid #222;
+    padding-bottom: 2px;
+}
+
+.ln-signin {
+    font-size: 13px;
+    font-weight: 400;
+    color: #fff;
+    background: #111;
+    text-decoration: none;
+    padding: 10px 24px;
+    border-radius: 30px;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.ln-signin:hover {
+    background: #333;
+    transform: translateY(-1px);
+}
+
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+.ln-hero {
+    padding: 72px 60px 60px 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.ln-hero-inner {
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+}
+
+.ln-heading {
+    font-size: 52px;
+    font-weight: 400;
+    line-height: 1.15;
+    color: #111;
+    letter-spacing: -0.03em;
+}
+
+.ln-desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: #888;
+    line-height: 1.8;
+    max-width: 420px;
+}
+
+/* ── CTA BUTTONS ── */
+.ln-actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-top: 6px;
+}
+
+.ln-btn-primary {
+    font-size: 13px;
+    font-weight: 400;
+    color: #fff;
+    background: #111;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 30px;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.ln-btn-primary:hover {
+    background: #333;
+    transform: translateY(-2px);
+}
+
+.ln-btn-ghost {
+    font-size: 13px;
+    font-weight: 300;
+    color: #555;
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #bbb;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.ln-btn-ghost:hover {
+    color: #111;
+    border-color: #444;
+}
+
+/* ══════════════════════════════════════
+   PREVIEW SECTION
+══════════════════════════════════════ */
+.ln-preview {
+    padding: 0 40px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+/* label */
+.ln-preview-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: #999;
+}
+
+.ln-preview-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #4D84AE;
+    animation: ln-pulse 2s ease-in-out infinite;
+}
+
+@keyframes ln-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* browser window frame */
+.ln-preview-window {
+    width: 100%;
+    max-width: 1100px;
+    border-radius: 16px 16px 0 0;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    box-shadow:
+        0 2px 4px rgba(0,0,0,0.04),
+        0 12px 40px rgba(0,0,0,0.10),
+        0 40px 80px rgba(0,0,0,0.07);
+    background: #fff;
+}
+
+/* top bar */
+.ln-window-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 18px;
+    background: #ececec;
+    border-bottom: 1px solid #ddd;
+}
+
+.ln-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.ln-dot-red    { background: #F44336; }
+.ln-dot-yellow { background: #f5a623; }
+.ln-dot-green  { background: #4caf50; }
+
+.ln-window-title {
+    flex: 1;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 300;
+    color: #888;
+    margin-left: -52px;
+}
+
+/* screenshot */
+.ln-window-body {
+    overflow: hidden;
+    line-height: 0;
+}
+
+.ln-preview-img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: top center;
+}
+
+/* ══════════════════════════════════════
+   FOOTER — sama dengan home, pakai global.css
+   Tambah class ln-footer-full agar tidak
+   bentrok dengan ln-footer lama
+══════════════════════════════════════ */
+.ln-footer-full {
+    background: #111;
+    color: white;
+    margin-top: 0;
+}
+
+.ln-footer-full .footer-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    padding: 80px;
+    gap: 40px;
+}
+
+.ln-footer-full .footer-col h3 {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 14px;
+    color: white;
+}
+
+.ln-footer-full .footer-col > p {
+    font-size: 12px;
+    color: #888;
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+.ln-footer-full .footer-col h4 {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+.ln-footer-full .footer-col a {
+    display: block;
+    margin-bottom: 10px;
+    color: #666;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 300;
+    transition: color 0.2s;
+}
+
+.ln-footer-full .footer-col a:hover {
+    color: white;
+}
+
+.ln-footer-full .copyright {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    font-size: 11px;
+    color: #555;
+    font-weight: 300;
+}

@@ -1,0 +1,217 @@
+/* =====================================================
+   SETTINGS.CSS — Quantara
+   ===================================================== */
+
+.st-page {
+    min-height: calc(100vh - 70px);
+    background: #f4f4f4;
+    padding: 48px 60px;
+}
+
+.st-container {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ── Back Button ── */
+.st-back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #444;
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    cursor: pointer;
+    transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
+    width: fit-content;
+}
+
+.st-back-btn svg {
+    width: 14px;
+    height: 14px;
+    stroke-width: 1.8;
+}
+
+.st-back-btn:hover {
+    background: #ebebeb;
+    transform: translateX(-2px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+/* ── Header ── */
+.st-header {
+    margin-bottom: 8px;
+}
+
+.st-tag {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: #aaa;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.st-title {
+    font-size: 28px;
+    font-weight: 400;
+    color: #111;
+    letter-spacing: -0.02em;
+}
+
+/* ── Card ── */
+.st-card {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 16px;
+    padding: 28px 32px;
+}
+
+.st-card-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.st-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.st-card-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 1.5;
+}
+
+.st-card-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #111;
+    margin-bottom: 3px;
+}
+
+.st-card-desc {
+    font-size: 11px;
+    font-weight: 300;
+    color: #aaa;
+}
+
+.st-divider {
+    height: 1px;
+    background: #f0f0f0;
+    margin-bottom: 20px;
+}
+
+/* ── Toggle list ── */
+.st-toggle-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.st-toggle-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.st-toggle-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+    color: #222;
+    margin-bottom: 3px;
+}
+
+.st-toggle-sub {
+    display: block;
+    font-size: 11px;
+    font-weight: 300;
+    color: #aaa;
+}
+
+/* ── Toggle Switch ── */
+.st-switch {
+    position: relative;
+    display: inline-block;
+    width: 42px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.st-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.st-slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background: #ddd;
+    border-radius: 34px;
+    transition: background 0.2s;
+}
+
+.st-slider::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 3px;
+    top: 3px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+
+.st-switch input:checked + .st-slider {
+    background: #111;
+}
+
+.st-switch input:checked + .st-slider::before {
+    transform: translateX(18px);
+}
+
+/* ── Footer ── */
+.st-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.st-btn-save {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #fff;
+    background: #111;
+    border: none;
+    padding: 11px 26px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.st-btn-save:hover {
+    background: #333;
+    transform: translateY(-1px);
+}
