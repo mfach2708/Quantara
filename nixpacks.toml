@@ -3,7 +3,5 @@ nixPkgs = ["php83", "php83Extensions.pdo_mysql", "php83Extensions.pdo", "php83Ex
 
 [phases.install]
 cmds = [
-  "curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer",
-  "composer install --ignore-platform-reqs",
-  "npm i"
+  "curl -sS https://getcomposer.org/installer -o composer-setup.php && php composer-setup.php && php composer.phar install --ignore-platform-reqs && npm i"
 ]
