@@ -1,0 +1,964 @@
+/* =====================================================
+   RESPONSIVE.CSS — Quantara
+   Mobile-first breakpoints untuk semua halaman
+   Breakpoints:
+     ≤ 1024px  — tablet landscape
+     ≤ 768px   — tablet portrait / mobile landscape
+     ≤ 480px   — mobile portrait
+   ===================================================== */
+
+/* ══════════════════════════════════════════════════
+   HAMBURGER MENU — shared by global navbar & ln-nav
+══════════════════════════════════════════════════ */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 38px;
+    height: 38px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 8px;
+    transition: background 0.2s;
+    z-index: 1100;
+    flex-shrink: 0;
+}
+.hamburger:hover { background: rgba(0,0,0,0.05); }
+
+.hamburger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: #222;
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s, width 0.3s;
+    transform-origin: center;
+}
+
+/* X state */
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ══════════════════════════════════════════════════
+   MOBILE NAV DRAWER — global navbar
+══════════════════════════════════════════════════ */
+.mobile-nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.25);
+    z-index: 1050;
+    opacity: 0;
+    pointer-events: none;          /* tidak blokir klik saat tertutup */
+    transition: opacity 0.25s;
+}
+.mobile-nav-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.mobile-nav-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 260px;
+    height: 100%;
+    background: #f4f4f4;
+    z-index: 1100;
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    transform: translateX(100%);          /* selalu off-screen kecuali .open */
+    visibility: hidden;                   /* tidak intercept events */
+    transition: transform 0.32s cubic-bezier(0.32, 0.72, 0, 1),
+                visibility 0s linear 0.32s;
+    box-shadow: -8px 0 32px rgba(0,0,0,0.08);
+}
+.mobile-nav-drawer.open {
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform 0.32s cubic-bezier(0.32, 0.72, 0, 1),
+                visibility 0s linear 0s;
+}
+
+.mobile-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+.mobile-nav-logo {
+    font-size: 17px;
+    font-weight: 500;
+    color: #111;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+}
+.mobile-nav-close {
+    width: 34px;
+    height: 34px;
+    border: none;
+    background: #ebebeb;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+.mobile-nav-close svg {
+    width: 16px;
+    height: 16px;
+    stroke-width: 1.8;
+    color: #555;
+}
+
+.mobile-nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    flex: 1;
+}
+.mobile-nav-links li a {
+    display: block;
+    padding: 14px 0;
+    font-size: 14px;
+    font-weight: 300;
+    color: #444;
+    text-decoration: none;
+    border-bottom: 1px solid #e8e8e8;
+    transition: color 0.2s, padding-left 0.2s;
+}
+.mobile-nav-links li a:hover,
+.mobile-nav-links li a.active-nav {
+    color: #111;
+    padding-left: 6px;
+    font-weight: 500;
+}
+
+.mobile-nav-bottom {
+    padding-top: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.mobile-nav-bottom .nav-signin,
+.mobile-nav-bottom .ln-signin {
+    font-size: 13px;
+    font-weight: 400;
+    color: #fff;
+    background: #111;
+    text-decoration: none;
+    padding: 10px 24px;
+    border-radius: 30px;
+    transition: background 0.2s;
+    flex: 1;
+    text-align: center;
+}
+.mobile-nav-bottom a { display: flex; align-items: center; }
+.mobile-nav-bottom .nav-icon-link,
+.mobile-nav-bottom img {
+    color: #555;
+}
+
+/* ══════════════════════════════════════════════════
+   GLOBAL NAVBAR — Tablet & Mobile
+══════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 14px 20px;
+    }
+    .navbar .menu {
+        display: none;
+    }
+    .navbar .nav-icons {
+        display: none;
+    }
+    .navbar .hamburger {
+        display: flex;
+        position: relative;
+        z-index: 1010;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .navbar {
+        padding: 16px 28px;
+    }
+    .menu {
+        gap: 24px;
+    }
+}
+
+/* ══════════════════════════════════════════════════
+   LANDING NAVBAR — ln-nav
+══════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .ln-nav {
+        padding: 14px 20px;
+    }
+    .ln-menu {
+        display: none;
+    }
+    .ln-signin {
+        display: none;
+    }
+    .ln-nav .hamburger {
+        display: flex;
+    }
+    /* Pastikan hamburger tidak tertimpa apapun */
+    .ln-nav .hamburger,
+    .navbar .hamburger {
+        position: relative;
+        z-index: 1010;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .ln-nav {
+        padding: 16px 28px;
+    }
+    .ln-menu {
+        gap: 24px;
+    }
+}
+
+/* ══════════════════════════════════════════════════
+   FOOTER — global & landing
+══════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+    .footer-container,
+    .ln-footer-full .footer-container {
+        grid-template-columns: 1fr 1fr;
+        padding: 50px 40px;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-container,
+    .ln-footer-full .footer-container {
+        grid-template-columns: 1fr;
+        padding: 40px 24px;
+        gap: 28px;
+    }
+}
+
+/* ══════════════════════════════════════════════════
+   LANDING PAGE (landing.blade.php / guest layout)
+══════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+    .ln-hero {
+        padding: 56px 40px 48px;
+    }
+    .ln-heading {
+        font-size: 42px;
+    }
+    .ln-preview {
+        padding: 0 24px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ln-hero {
+        padding: 48px 24px 40px;
+    }
+    .ln-heading {
+        font-size: 32px;
+        letter-spacing: -0.025em;
+    }
+    .ln-desc {
+        font-size: 13px;
+    }
+    .ln-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+        width: 100%;
+    }
+    .ln-btn-primary {
+        text-align: center;
+        padding: 14px 24px;
+    }
+    .ln-btn-ghost {
+        text-align: center;
+    }
+    .ln-preview {
+        padding: 0 16px 16px;
+    }
+    .ln-preview-window {
+        border-radius: 12px 12px 0 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .ln-heading {
+        font-size: 26px;
+    }
+}
+
+/* ══════════════════════════════════════════════════
+   HOME PAGE (style.css)
+══════════════════════════════════════════════════ */
+
+/* Hero section */
+@media (max-width: 1024px) {
+    .hero {
+        padding: 20px 0 60px 40px;
+    }
+    .cta-section {
+        padding: 70px 60px;
+    }
+    .stats {
+        right: 20px;
+        bottom: -140px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* ── Hero: stack vertically, remove relative chaos ── */
+    .hero {
+        padding: 24px 20px 40px;
+        overflow: hidden;
+    }
+    .hero-top {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+        position: static;
+    }
+    .hero-title {
+        padding-right: 0;
+        text-align: center;
+        max-width: 100%;
+    }
+    .hero-title h1 {
+        font-size: 22px;
+        line-height: 1.45;
+    }
+
+    /* ── Chart: full width, no negative margins ── */
+    .chart-area {
+        margin-left: 0;
+        margin-top: 12px;
+        position: static;      /* bukan relative/absolute lagi */
+        width: 100%;
+    }
+    #chartSvg {
+        width: 100%;
+        height: 160px;
+        display: block;
+    }
+
+    /* ── Chart label: bawah grafik, left-aligned ── */
+    .chart-bottom-left {
+        position: static;
+        max-width: 100%;
+        align-items: flex-start;
+        margin-top: 10px;
+        padding: 0 4px;
+    }
+    .chart-bottom-left p {
+        text-align: left;
+        font-size: 11px;
+        color: #666;
+    }
+    .chart-bottom-left .line {
+        width: 60px;
+    }
+
+    /* ── Stats: grid 2x2 di bawah chart, bukan absolute ── */
+    .stats {
+        position: static !important;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 20px;
+        bottom: auto !important;
+        right: auto !important;
+        /* Hapus background wrapper yang menyelimuti semua cards */
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+    }
+    .card {
+        width: 100%;
+        padding: 14px 12px;
+        border-radius: 14px;
+    }
+    .card h3 {
+        font-size: 15px;
+    }
+    .card p {
+        font-size: 9px;
+    }
+
+    /* ── Discover section ── */
+    .marquee h2 {
+        font-size: 48px;
+    }
+    .marquee-track {
+        gap: 60px;
+    }
+    .discover {
+        padding-top: 50px;
+        margin-top: 10px;
+    }
+    .discover-info {
+        flex-direction: column;
+        gap: 16px;
+        padding: 14px 20px;
+    }
+    .info-left { max-width: 100%; }
+
+    /* ── Discover grid: single column ── */
+    .discover-grid {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+        gap: 16px;
+    }
+
+    /* ── CTA section ── */
+    .cta-section {
+        padding: 48px 20px;
+    }
+    .cta-container {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding-top: 24px;
+    }
+    .cta-left h2 {
+        font-size: 26px;
+    }
+    .cta-right {
+        margin-left: 0;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .marquee h2 {
+        font-size: 34px;
+    }
+    .hero-title h1 {
+        font-size: 20px;
+    }
+    .stats {
+        grid-template-columns: 1fr 1fr;
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+    }
+    .card {
+        padding: 12px 10px;
+    }
+    .card h3 {
+        font-size: 14px;
+    }
+    #chartSvg {
+        height: 130px;
+    }
+}
+
+/* ══════════════════════════════════════════════════
+   ABOUT PAGE (about.css)
+══════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+    .about {
+        padding-top: 30px;
+        padding-bottom: 60px;
+    }
+    .stage {
+        margin-top: 48px;
+    }
+}
+
+@media (max-width: 768px) {
+    .about h1 {
+        font-size: 26px;
+        padding: 0 20px;
+    }
+    .about-sub {
+        padding: 0 20px;
+    }
+
+    /* Stats: sembunyikan absolute-positioned stats */
+    .stats-left,
+    .stats-right {
+        display: none !important;
+    }
+
+    /* Stage: tinggi disesuaikan ukuran card baru */
+    .stage {
+        margin-top: 48px;      /* jarak dari teks atas ke cards */
+        margin-bottom: 32px;   /* jarak dari cards ke teks bawah */
+        height: 190px;
+        overflow: visible;
+    }
+
+    /* Stack wrapper: ikuti lebar card baru */
+    .stage #stack {
+        width: 160px !important;
+        height: 190px !important;
+    }
+
+    /* Cards: lebih kecil, proporsional */
+    .stage .card {
+        width: 160px !important;
+        height: 190px !important;
+        border-radius: 16px !important;
+        padding: 16px 14px !important;
+    }
+
+    .stage .card h2 {
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        line-height: 1.3 !important;
+    }
+
+    .stage .card p {
+        font-size: 9px !important;
+        line-height: 1.4 !important;
+        max-width: 120px !important;
+        padding-bottom: 28px !important;
+    }
+
+    .stage .card .icon-wrap {
+        width: 32px !important;
+        height: 32px !important;
+        right: 14px !important;
+        bottom: 14px !important;
+        border-width: 2px !important;
+    }
+
+    .stage .card .icon-wrap svg {
+        width: 14px !important;
+        height: 14px !important;
+    }
+
+    /* Description */
+    .about-desc {
+        padding: 0 20px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .stage {
+        margin-top: 40px;
+        margin-bottom: 28px;
+        height: 165px;
+    }
+
+    .stage #stack {
+        width: 140px !important;
+        height: 165px !important;
+    }
+
+    .stage .card {
+        width: 140px !important;
+        height: 165px !important;
+        border-radius: 14px !important;
+        padding: 12px 12px !important;
+    }
+
+    .stage .card h2 {
+        font-size: 12px !important;
+    }
+
+    .stage .card p {
+        font-size: 8px !important;
+        max-width: 100px !important;
+        padding-bottom: 24px !important;
+    }
+
+    .stage .card .icon-wrap {
+        width: 26px !important;
+        height: 26px !important;
+        right: 10px !important;
+        bottom: 10px !important;
+    }
+
+    .stage .card .icon-wrap svg {
+        width: 12px !important;
+        height: 12px !important;
+    }
+}
+
+/* ══════════════════════════════════════════════════
+   ANALISIS PAGE (analisis.css)
+   Note: analisis.css already has its own @media blocks
+   We add/reinforce here for consistency
+══════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+    .analisis-page {
+        padding: 0 32px 140px;
+    }
+    .summary-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .detail-row {
+        grid-template-columns: 1fr 1fr;
+    }
+    .panel-fields {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .analisis-page {
+        padding: 0 16px 140px;
+    }
+    .page-header {
+        padding: 28px 0 24px;
+    }
+    .page-header h1 {
+        font-size: 22px;
+    }
+    .page-header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+    .header-right {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .filter-tabs {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .filter-tab {
+        flex: 1;
+        text-align: center;
+        padding: 6px 8px;
+        font-size: 10px;
+    }
+    .summary-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    .summary-value {
+        font-size: 16px;
+    }
+    .detail-row {
+        grid-template-columns: 1fr;
+    }
+    .metric-list {
+        grid-template-columns: 1fr 1fr;
+    }
+    .panel-inner {
+        padding: 8px 16px 32px;
+    }
+    .panel-fields {
+        grid-template-columns: 1fr;
+    }
+    .panel-head h2 {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .summary-row {
+        grid-template-columns: 1fr 1fr;
+    }
+    .summary-card {
+        padding: 16px 14px 14px;
+    }
+    .summary-value {
+        font-size: 14px;
+    }
+    .fab-wrapper {
+        bottom: 20px;
+    }
+}
+
+/* ══════════════════════════════════════════════════
+   EDUKASI PAGE (edukasi.css)
+══════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+    .edu-page {
+        padding: 0 32px 80px;
+    }
+    .edu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .edu-page {
+        padding: 0 16px 80px;
+    }
+    .edu-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 28px 0 24px;
+    }
+    .edu-header h1 {
+        font-size: 22px;
+    }
+    .edu-search {
+        width: 100%;
+    }
+    .edu-tabs {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .edu-tabs::-webkit-scrollbar { display: none; }
+    .edu-tab {
+        white-space: nowrap;
+        padding: 12px 14px;
+    }
+    .edu-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}
+
+/* ══════════════════════════════════════════════════
+   CONTACT PAGE (contact.css)
+══════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+    .ct-header {
+        grid-template-columns: 1fr;
+    }
+    .ct-header-left {
+        padding: 48px 40px;
+        border-right: none;
+        border-bottom: 1px solid #333;
+    }
+    .ct-title {
+        font-size: 42px;
+    }
+    .ct-header-right {
+        padding: 48px 40px;
+    }
+    .ct-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    /* ── Header band ── */
+    .ct-header {
+        grid-template-columns: 1fr;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    .ct-header-left {
+        padding: 36px 24px 28px;
+        min-height: auto;
+        border-right: none;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        overflow: visible;
+    }
+    .ct-badge {
+        font-size: 10px;
+        margin-bottom: 10px;
+    }
+    .ct-title {
+        font-size: 32px;
+        line-height: 1.15;
+        white-space: normal;
+        word-break: break-word;
+    }
+    .ct-header-right {
+        padding: 28px 24px 32px;
+    }
+    .ct-tagline {
+        font-size: 12px;
+        line-height: 1.7;
+    }
+    .ct-stat-row {
+        margin-top: 20px;
+        gap: 16px;
+    }
+    .ct-stat-num {
+        font-size: 20px;
+    }
+    .ct-stat-label {
+        font-size: 9px;
+    }
+
+    /* ── Main grid: satu kolom ── */
+    .ct-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 24px !important;
+        gap: 20px !important;
+    }
+
+    /* ── Location card ── */
+    .ct-loc-card {
+        width: 100% !important;
+        padding: 24px !important;
+        border-radius: 16px !important;
+    }
+    .ct-loc-address h2 {
+        font-size: 36px !important;
+    }
+    .ct-loc-address h3 {
+        font-size: 22px !important;
+    }
+    .ct-loc-detail p {
+        font-size: 12px !important;
+    }
+    .ct-loc-chips {
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        margin-top: 16px !important;
+    }
+    .ct-chip {
+        font-size: 10px !important;
+        padding: 6px 12px !important;
+    }
+
+    /* ── Socials panel ── */
+    .ct-socials-panel {
+        width: 100% !important;
+        padding: 24px !important;
+        border-radius: 16px !important;
+    }
+    .ct-socials-header h2 {
+        font-size: 22px !important;
+    }
+    .ct-social-row {
+        padding: 14px 0 !important;
+    }
+    .ct-social-name {
+        font-size: 13px !important;
+    }
+    .ct-social-handle {
+        font-size: 11px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .ct-title {
+        font-size: 26px;
+    }
+    .ct-header-left {
+        padding: 28px 20px 24px;
+    }
+    .ct-header-right {
+        padding: 24px 20px 28px;
+    }
+    .ct-grid {
+        padding: 16px !important;
+    }
+    .ct-loc-address h2 {
+        font-size: 30px !important;
+    }
+    .ct-loc-address h3 {
+        font-size: 18px !important;
+    }
+}
+
+/* ══════════════════════════════════════════════════
+   PROFILE PAGE (profile.css)
+══════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .pf-page {
+        padding: 24px 16px;
+        align-items: flex-start;
+        min-height: calc(100vh - 60px);
+    }
+    .pf-back-btn {
+        position: static;
+        margin-bottom: 24px;
+    }
+    .pf-center-wrap {
+        width: 100%;
+    }
+}
+
+/* ══════════════════════════════════════════════════
+   SETTINGS PAGE (settings.css)
+══════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .st-page {
+        padding: 28px 16px;
+    }
+    .st-container {
+        gap: 18px;
+    }
+    .st-title {
+        font-size: 22px;
+    }
+    .st-card {
+        padding: 22px 18px;
+    }
+}
+
+/* ══════════════════════════════════════════════════
+   AUTH PAGES — signin / signup (auth.css)
+══════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    /* Generic: center auth card, full width */
+    [class*="auth-"],
+    [class*="sign-"] {
+        padding: 16px !important;
+    }
+    [class*="auth-card"],
+    [class*="sign-card"],
+    [class*="auth-box"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        border-radius: 16px !important;
+        padding: 28px 20px !important;
+    }
+}
+
+/* ══════════════════════════════════════════════════
+   POPUP / MODAL — global
+══════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .popup-box {
+        width: calc(100vw - 32px);
+        max-width: calc(100vw - 32px);
+        padding: 22px 18px;
+    }
+    .popup-box-wide {
+        width: calc(100vw - 32px);
+    }
+    .popup-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}
+
+/* ══════════════════════════════════════════════════
+   UTILITY — hide scrollbar on horizontal scroll
+══════════════════════════════════════════════════ */
+.scroll-x {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+.scroll-x::-webkit-scrollbar { display: none; }
+
+/* Tables scroll on mobile */
+@media (max-width: 480px) {
+    .trans-table {
+        font-size: 11px;
+    }
+    .trans-head,
+    .trans-row {
+        grid-template-columns: 2fr 1fr 1fr;
+    }
+    .trans-name {
+        font-size: 11px;
+    }
+}

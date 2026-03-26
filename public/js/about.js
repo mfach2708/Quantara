@@ -16,14 +16,24 @@
         { tx:  9,  ty:  16, rot:  5, z: 1, shadow: '0 4px 14px rgba(0,0,0,0.07)' },
     ];
 
-    const GAP    = 260;
-    const SPREAD = cards.map((_, i) => ({
-        tx:     (i - (cards.length - 1) / 2) * GAP,
-        ty:     0,
-        rot:    0,
-        z:      i + 1,
-        shadow: '0 20px 60px rgba(0,0,0,0.11)',
-    }));
+    // GAP responsif: menyesuaikan lebar viewport
+    function getGap() {
+        const vw = window.innerWidth;
+        if (vw <= 480) return Math.round(vw * 0.20);   // ~96px di 480px layar
+        if (vw <= 768) return Math.round(vw * 0.22);   // ~143px di 650px layar
+        return 260;                                      // desktop original
+    }
+
+    function getSpread() {
+        const GAP = getGap();
+        return cards.map((_, i) => ({
+            tx:     (i - (cards.length - 1) / 2) * GAP,
+            ty:     0,
+            rot:    0,
+            z:      i + 1,
+            shadow: '0 20px 60px rgba(0,0,0,0.11)',
+        }));
+    }
 
     function place(card, pos, easing) {
         card.style.transition   = `transform ${easing}, box-shadow ${easing}`;
@@ -52,6 +62,7 @@
 
     function spread() {
         isBusy = true;
+        const SPREAD = getSpread();
         cards.forEach((card, i) => {
             setTimeout(() => { place(card, SPREAD[i], '1.3s ease'); }, i * 100);
         });
